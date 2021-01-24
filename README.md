@@ -4,7 +4,7 @@
 This is the SiD Secure EFT plugin for Prestashop 1.7. Please feel free to contact the SiD Secure EFT support team at support@sidpayment.com should you require any assistance.
 
 ## Installation
-[![How To Setup SiD Secure EFT for Prestashop 1.7](https://www.appinlet.com/wp-content/uploads/2020/04/How-To-Setup-SiD-Secure-EFT-for-Prestashop-1.7-scaled.jpg)](https://www.youtube.com/watch?v=Ir-X1yERUfA "How To Setup SiD Secure EFT for Prestashop 1.7")
+[![How To Setup SiD Secure EFT for Prestashop 1.7](https://appinlet.com/wp-content/uploads/2021/01/How-To-Setup-SiD-Secure-EFT-for-Prestashop-1.7.jpg)](https://www.youtube.com/watch?v=Ir-X1yERUfA "How To Setup SiD Secure EFT for Prestashop 1.7")
 
 Please navigate to the [releases page](https://github.com/SiD-Instant-EFT/SiD_Prestashop_1.7/releases), download the latest release (v1.0.0) and unzip. You will then be able to follow the integration guide which is included in the zip.
 
