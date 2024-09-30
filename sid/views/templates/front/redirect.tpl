@@ -1,13 +1,13 @@
 {*
- * Copyright (c) 2018 PayGate (Pty) Ltd
+ * Copyright (c) 2024 Payfast (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
- * 
+ *
  * Released under the GNU General Public License
  *}
-<html>
+<html lang="en">
 	<head>
-		<script type="text/javascript" src="{$url}js/jquery/jquery-1.2.6.pack.js"></script>
+		<script type="text/javascript"></script>
 	</head>
 	<body>
 		<p>{$redirect_text}<br /><a href="javascript:history.go(-1);">{$cancel_text}</a></p>

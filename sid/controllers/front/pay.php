@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2018 PayGate (Pty) Ltd
+ * Copyright (c) 2024 Payfast (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
  *
@@ -8,7 +8,7 @@
  */
 
 /**
- * @since 1.0.0
+ * @since 1.1.0
  */
 class SIDPayModuleFrontController extends ModuleFrontController
 {
@@ -16,31 +16,35 @@ class SIDPayModuleFrontController extends ModuleFrontController
     {
         parent::initContent();
 
-        $this->registerStylesheet( 'sid-popup', 'modules/' . $this->module->name . '/css/sidPopupStyle.min.css', array( 'position' => 'bottom', 'priority' => 1000 ) );
-        $this->registerJavascript( 'sid-popup', 'modules/' . $this->module->name . '/js/sidPopup.min.js', array( 'position' => 'bottom', 'priority' => 1000 ) );
-        $this->registerJavascript( 'sid-payment', 'modules/' . $this->module->name . '/js/sid-iframe-payment.js', array( 'position' => 'bottom', 'priority' => 1100 ) );
+        $sidUrl         = 'https://www.sidpayment.com/paySID/';
+        $sidMerchant    = Configuration::get('SID_MERCHANT');
+        $sidPrivateKey  = Configuration::get('SID_PRIVATE_KEY');
+        $sidCurrency    = 'ZAR';
+        $sidCountry     = 'ZA';
+        $sidReference   = $this->context->cart->id;
+        $sidAmount      = $this->context->cart->getOrderTotal(true, 3);
 
-        $SID_MERCHANT    = Configuration::get( 'SID_MERCHANT' );
-        $SID_PRIVATE_KEY = Configuration::get( 'SID_PRIVATE_KEY' );
-        $SID_CURRENCY    = 'ZAR';
-        $SID_COUNTRY     = 'ZA';
-        $SID_REFERENCE   = $this->context->cart->id;
-        $SID_AMOUNT      = $this->context->cart->getOrderTotal( true, 3 );
         // Hashes the variables
-        $SID_CONSISTENT = Tools::strtoupper( hash( 'sha512', $SID_MERCHANT . $SID_CURRENCY . $SID_COUNTRY . $SID_REFERENCE . $SID_AMOUNT . $SID_PRIVATE_KEY ) );
-
-        $this->context->smarty->assign(
-            array(
-                'SID_MERCHANT'    => $SID_MERCHANT,
-                'SID_CURRENCY'    => $SID_CURRENCY,
-                'SID_COUNTRY'     => $SID_COUNTRY,
-                'SID_REFERENCE'   => $SID_REFERENCE,
-                'SID_AMOUNT'      => $SID_AMOUNT,
-                'SID_PRIVATE_KEY' => $SID_PRIVATE_KEY,
-                'SID_CONSISTENT'  => $SID_CONSISTENT,
+        $sidConsistent = Tools::strtoupper(
+            hash(
+                'sha512',
+                $sidMerchant . $sidCurrency . $sidCountry . $sidReference . $sidAmount . $sidPrivateKey
             )
         );
 
-        $this->setTemplate( 'module:' . $this->module->name . '/views/templates/front/payment.tpl' );
+        $this->context->smarty->assign(
+            array(
+                'SID_MERCHANT'    => $sidMerchant,
+                'SID_CURRENCY'    => $sidCurrency,
+                'SID_COUNTRY'     => $sidCountry,
+                'SID_REFERENCE'   => $sidReference,
+                'SID_AMOUNT'      => $sidAmount,
+                'SID_PRIVATE_KEY' => $sidPrivateKey,
+                'SID_CONSISTENT'  => $sidConsistent,
+                'SID_URL'         => $sidUrl,
+            )
+        );
+
+        $this->setTemplate('module:' . $this->module->name . '/views/templates/front/redirect.tpl');
     }
 }
