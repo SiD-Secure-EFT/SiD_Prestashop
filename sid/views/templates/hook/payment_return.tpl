@@ -1,11 +1,11 @@
 {*
- * Copyright (c) 2018 PayGate (Pty) Ltd
+ * Copyright (c) 2024 Payfast (Pty) Ltd
  *
  * Author: App Inlet (Pty) Ltd
- * 
+ *
  * Released under the GNU General Public License
  *}
- 
+
 <p>{l s='Thank you for your order. Payment via SID Instant EFT on' mod='SID'} <span class="bold">{$shop_name}</span> {l s='is complete.' mod='SID'}
 	<br /><br />
 	{l s='You chose the SID Instant EFT payment method.' mod='SID'}

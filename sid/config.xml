@@ -2,7 +2,7 @@
 <module>
     <name>sid</name>
     <displayName><![CDATA[SID Instant EFT]]></displayName>
-    <version><![CDATA[1.0.0]]></version>
+    <version><![CDATA[1.1.0]]></version>
     <description><![CDATA[Accept payments by SID Instant EFT]]></description>
     <author><![CDATA[SiD Instant EFT]]></author>
     <tab><![CDATA[payments_gateways]]></tab>
